@@ -4,27 +4,34 @@
 #include <stdlib.h>
 #include <time.h>
 
-int main (){
-	int n, aleatorio;
-	
-	srand(time(NULL));
-	aleatorio = rand() %100+1;
-	
-	do{
-		printf ("Digite um numero inteiro entre 1 e 100: ");
-		scanf ("%d", &n);
-		
+int main() {
+    int n, aleatorio;
+
+    // Gera um número aleatório entre 1 e 100
+    srand(time(NULL));
+    aleatorio = rand() % 100 + 1;
+
+    printf("=============================================\n");
+    printf("       Bem-vindo ao Jogo de Adivinhação!\n");
+    printf("=============================================\n");
+    printf("Tente adivinhar o número inteiro entre 1 e 100.\n\n");
+
+    do {
+        printf("Digite um número: ");
+        scanf("%d", &n);
+
         if (n < aleatorio) {
-            printf("O nemero e maior que %d\n\n", n);
-            
+            printf("→ O número é maior que %d.\n\n", n);
         } else if (n > aleatorio) {
-            printf("O numero e menor que %d\n\n", n);
-            
+            printf("→ O número é menor que %d.\n\n", n);
         } else {
-            printf("\nParabens! Voce acertou. O número era: %d\n", aleatorio);
+            printf("\n🎉 Parabéns! Você acertou! O número era: %d \n", aleatorio);
         }
-		
-	} while(n!=aleatorio);
-	
-return 0;
+
+    } while (n != aleatorio);
+
+    printf("\nObrigado por jogar!\n");
+    printf("=============================================\n");
+
+    return 0;
 }
