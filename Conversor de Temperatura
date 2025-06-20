@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <string.h>
+
+double contemp(double valor, char origem, char destino){
+	double valCelsius;
+
+    if (origem == 'c') {
+        valCelsius = valor;
+        
+    } else if (origem == 'f') {
+        valCelsius = (valor - 32.0) * 5.0 / 9.0;
+        
+    } else if (origem == 'k') {
+        if (valor < 0) {
+            printf("Erro: Temperatura em Kelvin não pode ser negativa.\n");
+            return -1.0;
+        }
+        valCelsius = valor - 273.15;
+        
+    } else {
+        printf("Unidade de origem inválida!\n");
+        return -1.0;
+    }
+
+    if (destino == 'c') {
+        return valCelsius;
+        
+    } else if (destino == 'f') {
+        return valCelsius * 9.0 / 5.0 + 32.0;
+        
+    } else if (destino == 'k') {
+        return valCelsius + 273.15;
+        
+    } else {
+        printf("Unidade de destino inválida!\n");
+    	return -1.0;
+    }
+}
+
+int main (void){
+	
+	double valor, resultado;
+	char origem, destino;
+	
+	printf("===== Conversor de Temperatura =====\n\n");
+	 
+	printf ("Digite o valor as ser convertido: ");
+	scanf ("%lf", &valor);
+	
+	printf ("Digite a unidade de origem (c, f, k): ");
+    scanf(" %c", &origem);
+
+    printf("Digite a unidade de destino (c, f, k): ");
+    scanf(" %c", &destino);
+    
+    if ((origem == 'k' && valor < 0)) {
+        printf("Temperatura inválida para Kelvin!\n");
+    return 1;
+    }
+
+    resultado = contemp(valor, origem, destino);
+    
+    if (resultado == -1.0) {
+        printf("Erro na conversão.\n");
+        
+    } else {
+        printf("\nResultado:\n");
+        printf("%.2lf%c = %.2lf%c\n", valor, origem, resultado, destino);
+    }
+
+    printf("\n====================================\n");
+
+return 0;
+}
